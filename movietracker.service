@@ -1,0 +1,14 @@
+[Unit]
+Description=movieTracker service
+After=network.target
+
+[Service]
+ExecStart=/home/pi/.local/share/virtualenvs/movieTracker-FSN55c_C/bin/python -u /home/pi/movieTracker/movieTracker.py
+WorkingDirectory=/home/pi/movieTracker
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
