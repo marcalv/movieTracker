@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import os
 import requests
 from config import debug,API_KEY,JACKETT_PORT,JACKETT_IP,BOT_TOKEN,ALLOWED_USERNAMES
 import feedparser
@@ -326,16 +327,15 @@ def updatess():
 
 
 
-
 if __name__ == '__main__':
-
-    movieDB = TinyDB('db.json')
-    
+    installation_path = os.path.dirname(os.path.realpath(__file__))
+    db_path = (os.path.join(installation_path, 'db.json'))
+    print(db_path)
+    movieDB = TinyDB(db_path)
     sys.argv = sys.argv[1:]
     if sys.argv == []:
         main()
     elif sys.argv[0] == 'update':
         updatess()
-    
 
 
